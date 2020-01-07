@@ -1,0 +1,20 @@
+CREATE DATABASE 'jd2_homework3-4';
+USE jd2_homework3-4;
+CREATE TABLE film(
+id INT(11) NOT NULL PRIMARY KEY,
+film_name VARCHAR(50) NULL,
+film_duration INT(100) NULL,
+ticket_cost INT(100)
+);
+SHOW TABLES;
+INSERT INTO film (id, film_name, film_duration, ticket_cost) VALUES(1, "Avengers Infinity war", 120, 7);
+INSERT INTO film (id, film_name, film_duration, ticket_cost) VALUES(2, "The joker", 90, 5);
+INSERT INTO film (id, film_name, film_duration, ticket_cost) VALUES(3, "Star wars episode 9", 90, 8);
+INSERT INTO film (id, film_name, film_duration, ticket_cost) VALUES(4, "Saw 9", 60, 6);
+INSERT INTO film (id, film_name, film_duration, ticket_cost) VALUES(5, "Tomb rider", 120, 4);
+SHOW TABLE film;
+SELECT MAX(ticket_cost) FROM film;
+DELETE FROM film WHERE ticket_cost = (SELECT * FROM (SELECT MIN(ticket_cost) FROM film) AS t1);
+UPDATE film SET film_name = "Hot film!" WHERE ticket_cost = (SELECT * FROM (SELECT MAX(ticket_cost) FROM film)AS t2);
+DROP TABLE film;
+DROP DATABASE `jd2_homework3-4`;
